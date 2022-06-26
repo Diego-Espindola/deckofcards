@@ -47,6 +47,11 @@ class Player(object):
         for c in self.hand:
             c.show()
 
+    def discard(self, suit, value):
+        # TODO maybe try to search a card in the deck by suit and value previously informed
+        for c in self.hand:
+            pass
+
 
 deck = Deck()
 deck.shuffle()
