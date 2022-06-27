@@ -1,5 +1,6 @@
 # This is a sample Python script about OOP.
 import random
+from time import sleep
 
 
 class Card(object):
@@ -44,8 +45,10 @@ class Player(object):
         return self.hand
 
     def show_hand(self):
-        for c in self.hand:
-            c.show()
+        hand = []
+        for card in self.hand:
+            hand.append("{} of {}".format(card.value, card.suit))
+        print(hand)
 
     def discard(self, suit, value):
         # TODO maybe try to search a card in the deck by suit and value previously informed
@@ -55,16 +58,19 @@ class Player(object):
     def deal_cards(self, d, total):
         for x in range(0, total):
             self.draw(d)
-        for card in self.hand:
-            print("{} of {}".format(card.value, card.suit))
+        # self.show_hand()
 
 
 deck = Deck()
 deck.shuffle()
 
 diego = Player("Diego")
+roberto = Player("Roberto")
+
 
 diego.deal_cards(deck, 11)
-
-
-
+roberto.deal_cards(deck, 11)
+print("Roberto hand")
+roberto.show_hand()
+print("\n Diego hand")
+diego.show_hand()
