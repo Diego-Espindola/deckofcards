@@ -52,16 +52,19 @@ class Player(object):
         for c in self.hand:
             pass
 
+    def deal_cards(self, d, total):
+        for x in range(0, total):
+            self.draw(d)
+        for card in self.hand:
+            print("{} of {}".format(card.value, card.suit))
+
 
 deck = Deck()
 deck.shuffle()
 
 diego = Player("Diego")
-cards_in_hand = 11
-for x in range(0, cards_in_hand):
-    diego.draw(deck)
-hand = []
-for card in diego.hand:
-    hand.append("{} of {}".format(card.value, card.suit))
 
-print(hand)
+diego.deal_cards(deck, 11)
+
+
+
