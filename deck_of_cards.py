@@ -52,13 +52,22 @@ class Player(object):
 
     def discard(self, suit, value):
         # TODO maybe try to search a card in the deck by suit and value previously informed
+        x = 0
         for c in self.hand:
-            pass
+            if c.value == value and c.suit == suit:
+
+                self.hand.pop(x)
+            x += 1
 
     def deal_cards(self, d, total):
         for x in range(0, total):
             self.draw(d)
         # self.show_hand()
+
+
+class DiscardPile(object):
+    def __init__(self):
+        self.discarded_cards = []
 
 
 deck = Deck()
@@ -70,7 +79,15 @@ roberto = Player("Roberto")
 
 diego.deal_cards(deck, 11)
 roberto.deal_cards(deck, 11)
+
 print("Roberto hand")
 roberto.show_hand()
 print("\n Diego hand")
 diego.show_hand()
+
+value_test = input('Say which value you want to discard')
+suit_test = input('Say which suit you want to discard')
+
+roberto.discard(suit_test, value_test)
+
+roberto.show_hand()
